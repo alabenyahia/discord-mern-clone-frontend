@@ -1,0 +1,105 @@
+.login, .register {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__main, .register__main {
+    color: #72767d;
+    background-color: #36393f;
+    width: 480px;
+    padding: 32px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.login__main h3, .login__main p, .register__main h3 {
+    text-align: center;
+}
+
+.login__main h3, .register__main h3 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 8px;
+    line-height: 30px;
+}
+
+.login__main p {
+    line-height: 20px;
+    color: #b9bbbe;
+}
+
+.login__main form, .register__main form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login__main form label, .register__main form label {
+    color: #8e9297;
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: bold;
+}
+
+.login__main form input, .register__main form input {
+    padding: 10px;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #303339;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    outline: none;
+    margin-bottom: 20px;
+    color: #dcddde;
+    font-size: 16px;
+}
+
+.login__main form input:focus, .register__main form input:focus {
+    border-color: #7289da;
+}
+
+.login__main form button, .register__main form button {
+    background-color: #7289da;
+    border-radius: 3px;
+    line-height: 24px;
+    margin-bottom: 8px;
+    color: white;
+    height: 44px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login__main form button:hover, .register__main form button:hover {
+    background-color: #677bc4;
+}
+
+.login__main form button:active, .register__main form button:active{
+    background-color: #5b6eae;
+}
+
+.login__register {
+    font-size: 14px;
+    line-height: 16px;
+    color: #72767d
+}
+
+.login__register button, .register__login button {
+    background: none;
+    border: none;
+    outline: none;
+    color: #7289da;
+    padding: 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login__register button:hover, .register__login button:hover {
+    text-decoration: underline;
+}
