@@ -1,0 +1,95 @@
+.homeSidebar {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    background-color: #2f3136;
+    color: white;
+    min-width: 250px;
+}
+
+.homeSidebar__serverName{
+    font-size: 16px;
+    padding: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    font-weight: bold;
+}
+.homeSidebar__serverName:hover{
+    background-color: rgba(79,84,92,0.32);
+}
+
+.homeSidebar__channels{
+    padding: 16px 8px;
+    flex: 1;
+}
+
+.homeSidebar__addChannel {
+    color: #8e9297;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.homeSidebar__addChannel button {
+    background: none;
+    border: none;
+    outline: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+.homeSidebar__addChannel button:hover {
+    color: #dcddde;
+}
+
+.homeSidebar__bottomBar {
+    background-color: #202225;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+.homeSidebar__profileInfo{
+    display: flex;
+    align-items: center;
+}
+.homeSidebar__avatar img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.homeSidebar__profileInfoText {
+    margin: 0 8px;
+}
+
+.homeSidebar__profileUsername, .homeSidebar__profileId{
+    display: block;
+}
+
+.homeSidebar__profileId {
+    font-size: 12px;
+    color: #b9bbbe;
+}
+
+.homeSidebar__bottomIcons button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: #b9bbbe;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.homeSidebar__bottomIcons button:hover {
+    background-color: rgba(79,84,92,0.32);
+    color: #dcddde;
+}
