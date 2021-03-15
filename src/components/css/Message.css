@@ -1,0 +1,39 @@
+.message {
+    margin-bottom: 42px;
+    display: flex;
+    align-items: center;
+    line-height: 1.6rem;
+}
+
+.message:last-of-type {
+    margin-bottom: 0;
+
+}
+
+
+.message__avatar img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.message__main {
+    margin: 0 16px;
+}
+
+.message__usernameAndData {
+    display: flex;
+}
+
+.message__date {
+    color: #72767d;
+    font-size: 0.75rem;
+    margin: 0 10px;
+}
+
+.message__text {
+    color: #dcddde;
+    overflow-wrap: break-word;
+    font-weight: lighter;
+}
+

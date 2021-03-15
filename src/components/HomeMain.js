@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/HomeMain.css";
+import Message from "./Message";
 
 function HomeMain(props) {
   return (
@@ -7,7 +8,24 @@ function HomeMain(props) {
       <div className="homeMain__channelName">
         <span>#</span>Channel Name
       </div>
-      <div className="homeMain__msgsContainer"></div>
+      <div className="homeMain__msgsContainer">
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+      </div>
       <div className="homeMain__msgSender">
         <form>
           <input type="text" placeholder="Message" />

@@ -1,7 +1,6 @@
 .homeMain{
     display: flex;
     flex-direction: column;
-    position: relative;
     width: 80%;
     height: 100%;
     background-color: #36393f;
@@ -23,14 +22,13 @@
 }
 
 .homeMain__msgsContainer {
+    padding: 16px;
     flex: 1;
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .homeMain__msgSender {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     box-sizing: border-box;
     padding: 0 16px;
