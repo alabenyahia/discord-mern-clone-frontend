@@ -10,7 +10,7 @@ function Home(props) {
     <div className="home">
       {/*<HomeSidebar />
       <HomeMain />*/}
-      <Register />
+      <Login />
     </div>
   );
 }

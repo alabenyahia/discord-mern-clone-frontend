@@ -4,7 +4,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { useContext, useState } from "react";
 
 function Register(props) {
-  const { registerUser, validationError, resetError } = useContext(
+  const { registerUser, registerValidationError, resetError } = useContext(
     GlobalContext
   );
   const [email, setEmail] = useState("");
@@ -22,10 +22,12 @@ function Register(props) {
         <form onSubmit={handleSubmit}>
           <label
             htmlFor="email"
-            className={validationError.email ? "register__error" : ""}
+            className={registerValidationError.email ? "register__error" : ""}
           >
             EMAIL
-            {validationError.email && <span> - {validationError.email}</span>}
+            {registerValidationError.email && (
+              <span> - {registerValidationError.email}</span>
+            )}
           </label>
           <input
             type="text"
@@ -33,16 +35,20 @@ function Register(props) {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={validationError.email ? "register__errorInput" : ""}
+            className={
+              registerValidationError.email ? "register__errorInput" : ""
+            }
           />
 
           <label
             htmlFor="username"
-            className={validationError.username ? "register__error" : ""}
+            className={
+              registerValidationError.username ? "register__error" : ""
+            }
           >
             USERNAME
-            {validationError.username && (
-              <span> - {validationError.username}</span>
+            {registerValidationError.username && (
+              <span> - {registerValidationError.username}</span>
             )}
           </label>
           <input
@@ -51,16 +57,20 @@ function Register(props) {
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className={validationError.username ? "register__errorInput" : ""}
+            className={
+              registerValidationError.username ? "register__errorInput" : ""
+            }
           />
 
           <label
             htmlFor="password"
-            className={validationError.password ? "register__error" : ""}
+            className={
+              registerValidationError.password ? "register__error" : ""
+            }
           >
             PASSWORD
-            {validationError.password && (
-              <span> - {validationError.password}</span>
+            {registerValidationError.password && (
+              <span> - {registerValidationError.password}</span>
             )}
           </label>
           <input
@@ -69,7 +79,9 @@ function Register(props) {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className={validationError.password ? "register__errorInput" : ""}
+            className={
+              registerValidationError.password ? "register__errorInput" : ""
+            }
           />
           <button type="submit">Continue</button>
         </form>

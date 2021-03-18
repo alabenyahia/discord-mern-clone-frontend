@@ -6,7 +6,8 @@ const initialState = {
   user: null,
   isAuthenticated: null,
   loading: true,
-  validationError: {},
+  registerValidationError: {},
+  loginValidationError: {},
   serverError: {},
   authError: {},
 };
@@ -29,13 +30,37 @@ export const GlobalProvider = ({ children }) => {
         dispatch({ type: "REGISTER_SUCCESS", payload: res });
       else if (rawRes.status === 500) {
         dispatch({
-          type: "USER_LOAD_FAIL",
+          type: "REGISTER_FAIL",
           payload: { serverError: "Something went wrong" },
         });
       } else dispatch({ type: "REGISTER_FAIL", payload: res });
     } catch (err) {
       dispatch({
         type: "REGISTER_FAIL",
+        payload: { serverError: "Something went wrong" },
+      });
+    }
+  }
+
+  async function loginUser(data) {
+    try {
+      const rawRes = await fetch(`${BASE_URL}/api/user/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const res = await rawRes.json();
+      if (rawRes.status === 200)
+        dispatch({ type: "LOGIN_SUCCESS", payload: res });
+      else if (rawRes.status === 500) {
+        dispatch({
+          type: "LOGIN_FAIL",
+          payload: { serverError: "Something went wrong" },
+        });
+      } else dispatch({ type: "REGISTER_FAIL", payload: res });
+    } catch (err) {
+      dispatch({
+        type: "LOGIN_FAIL",
         payload: { serverError: "Something went wrong" },
       });
     }
@@ -80,7 +105,7 @@ export const GlobalProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider
-      value={{ ...state, registerUser, resetError, loadUser }}
+      value={{ ...state, registerUser, resetError, loadUser, loginUser }}
     >
       {children}
     </GlobalContext.Provider>

@@ -105,15 +105,15 @@
     text-decoration: underline;
 }
 
-.register__error {
+.register__error, .login__error {
     color: #f04747 !important;
 }
 
-.register__error span {
+.register__error span, .login__error span {
     font-style: italic;
     font-weight: lighter;
 }
 
-.register__errorInput {
+.register__errorInput, .login__errorInput {
     border-color: #f04747 !important;
 }
