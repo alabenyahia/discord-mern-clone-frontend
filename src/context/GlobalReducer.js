@@ -1,7 +1,9 @@
 export const GlobalReducer = (state, action) => {
   switch (action.type) {
     case "REGISTER_SUCCESS":
-      localStorage.setItem("DISCORD_CLONE-token", action.payload.token);
+    case "USER_LOAD_SUCCESS":
+      if (action.payload.token)
+        localStorage.setItem("DISCORD_CLONE-token", action.payload.token);
       return {
         ...state,
         ...action.payload,
@@ -9,6 +11,7 @@ export const GlobalReducer = (state, action) => {
         loading: false,
       };
     case "REGISTER_FAIL":
+    case "USER_LOAD_FAIL":
       localStorage.removeItem("DISCORD_CLONE-token");
       return {
         ...state,
@@ -18,7 +21,7 @@ export const GlobalReducer = (state, action) => {
         loading: false,
       };
     case "RESET_ERROR":
-      return { ...state, error: {}, serverError: {} };
+      return { ...state, validationError: {}, serverError: {}, authError: {} };
     default:
       return state;
   }

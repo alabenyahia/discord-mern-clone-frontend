@@ -6,8 +6,9 @@ const initialState = {
   user: null,
   isAuthenticated: null,
   loading: true,
-  error: {},
+  validationError: {},
   serverError: {},
+  authError: {},
 };
 
 export const GlobalContext = createContext(initialState);
@@ -26,15 +27,17 @@ export const GlobalProvider = ({ children }) => {
       const res = await rawRes.json();
       if (rawRes.status === 200)
         dispatch({ type: "REGISTER_SUCCESS", payload: res });
-      else dispatch({ type: "REGISTER_FAIL", payload: res });
-      console.log("rawRES", rawRes);
-      console.log("res", res);
+      else if (rawRes.status === 500) {
+        dispatch({
+          type: "USER_LOAD_FAIL",
+          payload: { serverError: "Something went wrong" },
+        });
+      } else dispatch({ type: "REGISTER_FAIL", payload: res });
     } catch (err) {
       dispatch({
         type: "REGISTER_FAIL",
         payload: { serverError: "Something went wrong" },
       });
-      console.error(err);
     }
   }
 
@@ -42,8 +45,43 @@ export const GlobalProvider = ({ children }) => {
     dispatch({ type: "RESET_ERROR" });
   }
 
+  async function loadUser() {
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+      };
+      const token = localStorage.getItem("DISCORD_CLONE-token");
+      if (token) headers["auth-token"] = token;
+      const rawRes = await fetch(`${BASE_URL}/api/user/`, {
+        method: "GET",
+        headers,
+      });
+      const res = await rawRes.json();
+      if (rawRes.status === 200) {
+        dispatch({ type: "USER_LOAD_SUCCESS", payload: res });
+      } else if (rawRes.status === 500) {
+        dispatch({
+          type: "USER_LOAD_FAIL",
+          payload: { serverError: "Something went wrong" },
+        });
+      } else {
+        dispatch({
+          type: "USER_LOAD_FAIL",
+          payload: res,
+        });
+      }
+    } catch (err) {
+      dispatch({
+        type: "USER_LOAD_FAIL",
+        payload: { serverError: "Something went wrong" },
+      });
+    }
+  }
+
   return (
-    <GlobalContext.Provider value={{ ...state, registerUser, resetError }}>
+    <GlobalContext.Provider
+      value={{ ...state, registerUser, resetError, loadUser }}
+    >
       {children}
     </GlobalContext.Provider>
   );
