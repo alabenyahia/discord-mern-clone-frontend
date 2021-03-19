@@ -134,6 +134,21 @@ export const GlobalProvider = ({ children }) => {
     dispatch({ type: "CHANGE_SELECTED_CHANNEL", payload: channel[0] });
   }
 
+  async function sendMessage(channelid, text) {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    const token = localStorage.getItem("DISCORD_CLONE-token");
+    if (token) headers["auth-token"] = token;
+    const rawRes = await fetch(`${BASE_URL}/api/channels/messages/new`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ channelid, text }),
+    });
+    const res = await rawRes.json();
+    console.log(res);
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -145,6 +160,7 @@ export const GlobalProvider = ({ children }) => {
         logout,
         loadChannels,
         changeSelectedChannel,
+        sendMessage,
       }}
     >
       {children}

@@ -2,13 +2,23 @@ import React, { useContext } from "react";
 import "./css/HomeMain.css";
 import Message from "./Message";
 import { GlobalContext } from "../context/GlobalState";
+import { useState } from "react";
 
 function HomeMain(props) {
-  const { selectedChannel } = useContext(GlobalContext);
+  const { selectedChannel, sendMessage } = useContext(GlobalContext);
+  const [message, setMessage] = useState("");
+
+  const handleSendingMsg = (e) => {
+    e.preventDefault();
+    if (message.length > 0) sendMessage(selectedChannel._id, message);
+    setMessage("");
+  };
+
   return (
     <div className="homeMain">
       <div className="homeMain__channelName">
-        <span>#</span>Channel Name
+        <span>#</span>
+        {selectedChannel.name}
       </div>
       <div className="homeMain__msgsContainer">
         {selectedChannel.messages &&
@@ -22,8 +32,13 @@ function HomeMain(props) {
           ))}
       </div>
       <div className="homeMain__msgSender">
-        <form>
-          <input type="text" placeholder="Message" />
+        <form onSubmit={handleSendingMsg}>
+          <input
+            type="text"
+            placeholder="Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
           <button type="submit">Send Message</button>
         </form>
       </div>
