@@ -14,7 +14,9 @@ function Message(props) {
       <div className="message__main">
         <div className="message__usernameAndData">
           <div className="message__username">{props.username}</div>
-          <div className="message__date">{moment(props.date).format()}</div>
+          <div className="message__date">
+            {moment(props.date).local().fromNow()}
+          </div>
         </div>
         <div className="message__text">{props.text}</div>
       </div>
