@@ -1,8 +1,14 @@
 import React from "react";
 import "./css/HomeSidebar.css";
 import Channel from "./Channel";
+import { GlobalContext } from "../context/GlobalState";
+import { useContext } from "react";
 
 function HomeSidebar(props) {
+  const { logout } = useContext(GlobalContext);
+  const handleLogout = () => {
+    logout();
+  };
   return (
     <nav className="homeSidebar">
       <div className="homeSidebar__serverName">alabenyahia's server</div>
@@ -34,8 +40,8 @@ function HomeSidebar(props) {
           </div>
         </div>
         <div className="homeSidebar__bottomIcons">
-          <button>
-            <i className="material-icons">settings</i>
+          <button onClick={handleLogout}>
+            <i className="material-icons">logout</i>
           </button>
         </div>
       </div>

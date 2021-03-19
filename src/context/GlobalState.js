@@ -103,9 +103,20 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
+  function logout() {
+    dispatch({ type: "USER_LOGOUT" });
+  }
+
   return (
     <GlobalContext.Provider
-      value={{ ...state, registerUser, resetError, loadUser, loginUser }}
+      value={{
+        ...state,
+        registerUser,
+        resetError,
+        loadUser,
+        loginUser,
+        logout,
+      }}
     >
       {children}
     </GlobalContext.Provider>

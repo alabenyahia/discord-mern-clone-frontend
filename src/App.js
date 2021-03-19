@@ -1,7 +1,7 @@
 import "./App.css";
-import Home from "./components/Home";
 import { useEffect, useContext } from "react";
 import { GlobalContext } from "./context/GlobalState";
+import Routes from "./components/Routes";
 
 function App() {
   const { loadUser } = useContext(GlobalContext);
@@ -10,7 +10,7 @@ function App() {
   }, []);
   return (
     <div className="app">
-      <Home />
+      <Routes />
     </div>
   );
 }

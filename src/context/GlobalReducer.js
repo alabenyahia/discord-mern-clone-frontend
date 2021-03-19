@@ -14,6 +14,7 @@ export const GlobalReducer = (state, action) => {
     case "REGISTER_FAIL":
     case "LOGIN_FAIL":
     case "USER_LOAD_FAIL":
+    case "USER_LOGOUT":
       localStorage.removeItem("DISCORD_CLONE-token");
       return {
         ...state,
