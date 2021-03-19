@@ -10,6 +10,8 @@ const initialState = {
   loginValidationError: {},
   serverError: {},
   authError: {},
+  channels: [],
+  selectedChannel: {},
 };
 
 export const GlobalContext = createContext(initialState);
@@ -107,6 +109,31 @@ export const GlobalProvider = ({ children }) => {
     dispatch({ type: "USER_LOGOUT" });
   }
 
+  async function loadChannels() {
+    //TODO: not very efficient to load all messages of every channel (it just works but needs to be changed)
+    if (state.isAuthenticated) {
+      const headers = {
+        "Content-Type": "application/json",
+      };
+      const token = localStorage.getItem("DISCORD_CLONE-token");
+      if (token) headers["auth-token"] = token;
+      const rawRes = await fetch(`${BASE_URL}/api/channels/all`, {
+        method: "GET",
+        headers,
+      });
+      const res = await rawRes.json();
+      if (rawRes.status === 200) {
+        dispatch({ type: "CHANNELS_LOAD_SUCCESS", payload: res });
+      }
+      //TODO: handle loading channels fail
+    }
+  }
+
+  function changeSelectedChannel(id) {
+    const channel = state.channels.filter((ch) => ch._id === id);
+    dispatch({ type: "CHANGE_SELECTED_CHANNEL", payload: channel[0] });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -116,6 +143,8 @@ export const GlobalProvider = ({ children }) => {
         loadUser,
         loginUser,
         logout,
+        loadChannels,
+        changeSelectedChannel,
       }}
     >
       {children}

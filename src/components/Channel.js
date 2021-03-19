@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./css/Channel.css";
+import { GlobalContext } from "../context/GlobalState";
 
 function Channel(props) {
+  const { changeSelectedChannel } = useContext(GlobalContext);
+
+  const handleClick = () => {
+    changeSelectedChannel(props.id);
+  };
   return (
-    <div className="channel">
-      <span>#</span>Channel Name
+    <div className="channel" onClick={handleClick}>
+      <span>#</span>
+      {props.name}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { GlobalContext } from "../context/GlobalState";
 import { useContext } from "react";
 
 function HomeSidebar(props) {
-  const { logout } = useContext(GlobalContext);
+  const { logout, channels, user } = useContext(GlobalContext);
   const handleLogout = () => {
     logout();
   };
@@ -20,10 +20,10 @@ function HomeSidebar(props) {
           </button>
         </div>
         <div className="homeSidebar__channelsList">
-          <Channel />
-          <Channel />
-          <Channel />
-          <Channel />
+          {channels.length > 0 &&
+            channels.map((channel) => (
+              <Channel id={channel._id} key={channel._id} name={channel.name} />
+            ))}
         </div>
       </div>
       <div className="homeSidebar__bottomBar">
@@ -35,8 +35,12 @@ function HomeSidebar(props) {
             />
           </div>
           <div className="homeSidebar__profileInfoText">
-            <span className="homeSidebar__profileUsername">alabenyahia</span>
-            <span className="homeSidebar__profileId">#1234</span>
+            <span className="homeSidebar__profileUsername">
+              {user.username}
+            </span>
+            <span className="homeSidebar__profileId">
+              {user.id.slice(0, 4)}
+            </span>
           </div>
         </div>
         <div className="homeSidebar__bottomIcons">

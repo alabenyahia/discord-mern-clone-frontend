@@ -3,7 +3,7 @@ import "./css/LoginRegister.css";
 import { GlobalContext } from "../context/GlobalState";
 import { useContext, useState } from "react";
 import Loading from "./Loading";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 function Register(props) {
   const {
@@ -95,7 +95,9 @@ function Register(props) {
             <button type="submit">Continue</button>
           </form>
           <div className="register__login">
-            <button>Already have an account?</button>
+            <Link to="/login">
+              <button>Already have an account?</button>
+            </Link>
           </div>
         </div>
       </div>

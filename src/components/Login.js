@@ -2,7 +2,7 @@ import React from "react";
 import "./css/LoginRegister.css";
 import { GlobalContext } from "../context/GlobalState";
 import { useContext, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Loading from "./Loading";
 
 function Login(props) {
@@ -69,7 +69,10 @@ function Login(props) {
             <button type="submit">Login</button>
           </form>
           <div className="login__register">
-            Need an account? <button>Register</button>
+            Need an account?{" "}
+            <Link to="/register">
+              <button>Register</button>
+            </Link>
           </div>
         </div>
       </div>

@@ -11,6 +11,11 @@ export const GlobalReducer = (state, action) => {
         isAuthenticated: true,
         loading: false,
       };
+    case "CHANNELS_LOAD_SUCCESS":
+      return {
+        ...state,
+        ...action.payload,
+      };
     case "REGISTER_FAIL":
     case "LOGIN_FAIL":
     case "USER_LOAD_FAIL":
@@ -30,6 +35,11 @@ export const GlobalReducer = (state, action) => {
         loginValidationError: {},
         serverError: {},
         authError: {},
+      };
+    case "CHANGE_SELECTED_CHANNEL":
+      return {
+        ...state,
+        selectedChannel: action.payload,
       };
     default:
       return state;

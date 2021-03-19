@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/Message.css";
+import moment from "moment";
 
 function Message(props) {
   return (
@@ -12,13 +13,10 @@ function Message(props) {
       </div>
       <div className="message__main">
         <div className="message__usernameAndData">
-          <div className="message__username">alabenyahia</div>
-          <div className="message__date">Today at 16:00</div>
+          <div className="message__username">{props.username}</div>
+          <div className="message__date">{moment(props.date).format()}</div>
         </div>
-        <div className="message__text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi,
-          omnis.
-        </div>
+        <div className="message__text">{props.text}</div>
       </div>
     </div>
   );
