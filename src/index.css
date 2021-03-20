@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #202225;
+}
+
 ::-webkit-scrollbar{
   width: 10px;
 }

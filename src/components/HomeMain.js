@@ -4,7 +4,6 @@ import Message from "./Message";
 import { GlobalContext } from "../context/GlobalState";
 import { useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-import ScrollableFeed from "react-scrollable-feed";
 
 function HomeMain(props) {
   const { selectedChannel, sendMessage } = useContext(GlobalContext);
