@@ -15,6 +15,11 @@ function HomeSidebar(props) {
     logout();
   };
 
+  const handleModalSubmit = (e) => {
+    e.preventDefault();
+    console.log("shdhsdh");
+  };
+
   return (
     <nav className="homeSidebar">
       <div className="homeSidebar__serverName">alabenyahia's server</div>
@@ -81,17 +86,19 @@ function HomeSidebar(props) {
       >
         <div className="homeSidebar__modalContent">
           <h3>Create Text Channel</h3>
-          <form>
-            <label htmlFor="channelName">CHANNEL NAME</label>
-            <div>
-              <span>#</span>
-              <input type="text" id="channelName" placeholder="new-channel" />
+          <form onSubmit={handleModalSubmit}>
+            <div className="homeSidebar__modelContentTop">
+              <label htmlFor="channelName">CHANNEL NAME</label>
+              <div>
+                <span>#</span>
+                <input type="text" id="channelName" placeholder="new-channel" />
+              </div>
+            </div>
+            <div className="homeSidebar__modelContentBottom">
+              <button>Cancel</button>
+              <button type="submit">Create</button>
             </div>
           </form>
-          <div className="homeSidebar__modelContentBottom">
-            <button>Cancel</button>
-            <button type="submit">Create</button>
-          </div>
         </div>
       </Modal>
     </nav>
