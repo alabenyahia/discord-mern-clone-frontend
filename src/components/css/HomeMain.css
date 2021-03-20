@@ -50,3 +50,8 @@
     border-radius: 8px;
     color: #dcddde;
 }
+
+.homeMain__scrollToBottom{
+    height: 100%;
+    width: 100%;
+}

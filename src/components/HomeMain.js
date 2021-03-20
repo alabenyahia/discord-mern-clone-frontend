@@ -3,6 +3,8 @@ import "./css/HomeMain.css";
 import Message from "./Message";
 import { GlobalContext } from "../context/GlobalState";
 import { useState } from "react";
+import ScrollToBottom from "react-scroll-to-bottom";
+import ScrollableFeed from "react-scrollable-feed";
 
 function HomeMain(props) {
   const { selectedChannel, sendMessage } = useContext(GlobalContext);
@@ -20,16 +22,22 @@ function HomeMain(props) {
         <span>#</span>
         {selectedChannel.name}
       </div>
-      <div className="homeMain__msgsContainer">
-        {selectedChannel.messages &&
-          selectedChannel.messages.map((msg) => (
-            <Message
-              key={msg._id}
-              username={msg.user ? msg.user.username : "DELETED USER"}
-              text={msg.text}
-              date={msg.date}
-            />
-          ))}
+
+      <div
+        className="homeMain__msgsContainer"
+        style={{ height: "100%", overflow: "auto" }}
+      >
+        <ScrollToBottom className="homeMain__scrollToBottom">
+          {selectedChannel.messages &&
+            selectedChannel.messages.map((msg) => (
+              <Message
+                key={msg._id}
+                username={msg.user ? msg.user.username : "DELETED USER"}
+                text={msg.text}
+                date={msg.date}
+              />
+            ))}
+        </ScrollToBottom>
       </div>
       <div className="homeMain__msgSender">
         <form onSubmit={handleSendingMsg}>
