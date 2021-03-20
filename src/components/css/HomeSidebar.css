@@ -21,7 +21,9 @@
 .homeSidebar__channels {
   padding: 16px 8px;
   flex: 1;
+  overflow: auto;
 }
+
 
 .homeSidebar__addChannel {
   color: #8e9297;

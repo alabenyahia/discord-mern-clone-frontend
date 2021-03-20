@@ -8,8 +8,9 @@ import Modal from "react-modal";
 Modal.setAppElement("#root");
 
 function HomeSidebar(props) {
-  const { logout, channels, user } = useContext(GlobalContext);
+  const { logout, channels, user, createChannel } = useContext(GlobalContext);
   const [modalIsOpen, setIsModelOpen] = useState(false);
+  const [modalText, setModalText] = useState("");
 
   const handleLogout = () => {
     logout();
@@ -17,7 +18,11 @@ function HomeSidebar(props) {
 
   const handleModalSubmit = (e) => {
     e.preventDefault();
-    console.log("shdhsdh");
+    if (modalText.length > 0) {
+      createChannel(modalText);
+      setModalText("");
+      setIsModelOpen(false);
+    }
   };
 
   return (
@@ -91,11 +96,25 @@ function HomeSidebar(props) {
               <label htmlFor="channelName">CHANNEL NAME</label>
               <div>
                 <span>#</span>
-                <input type="text" id="channelName" placeholder="new-channel" />
+                <input
+                  type="text"
+                  id="channelName"
+                  placeholder="new-channel"
+                  value={modalText}
+                  onChange={(e) => setModalText(e.target.value)}
+                />
               </div>
             </div>
             <div className="homeSidebar__modelContentBottom">
-              <button>Cancel</button>
+              <button
+                type="button"
+                onClick={() => {
+                  setModalText("");
+                  setIsModelOpen(false);
+                }}
+              >
+                Cancel
+              </button>
               <button type="submit">Create</button>
             </div>
           </form>

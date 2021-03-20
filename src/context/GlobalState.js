@@ -146,10 +146,23 @@ export const GlobalProvider = ({ children }) => {
       body: JSON.stringify({ channelid, text }),
     });
     const res = await rawRes.json();
-    console.log(res);
   }
 
-  async function addChannel(name) {}
+  async function createChannel(name) {
+    if (state.isAuthenticated) {
+      const headers = {
+        "Content-Type": "application/json",
+      };
+      const token = localStorage.getItem("DISCORD_CLONE-token");
+      if (token) headers["auth-token"] = token;
+      const rawRes = await fetch(`${BASE_URL}/api/channels/new`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ name }),
+      });
+      const res = await rawRes.json();
+    }
+  }
 
   return (
     <GlobalContext.Provider
@@ -163,6 +176,7 @@ export const GlobalProvider = ({ children }) => {
         loadChannels,
         changeSelectedChannel,
         sendMessage,
+        createChannel,
       }}
     >
       {children}
