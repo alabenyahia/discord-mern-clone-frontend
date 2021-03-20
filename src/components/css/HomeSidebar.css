@@ -1,95 +1,181 @@
 .homeSidebar {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    height: 100%;
-    background-color: #2f3136;
-    color: white;
-    min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  background-color: #2f3136;
+  color: white;
+  min-width: 250px;
 }
 
-.homeSidebar__serverName{
-    font-size: 16px;
-    padding: 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.4);
-    font-weight: bold;
+.homeSidebar__serverName {
+  font-size: 16px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  font-weight: bold;
 }
-.homeSidebar__serverName:hover{
-    background-color: rgba(79,84,92,0.32);
+.homeSidebar__serverName:hover {
+  background-color: rgba(79, 84, 92, 0.32);
 }
 
-.homeSidebar__channels{
-    padding: 16px 8px;
-    flex: 1;
+.homeSidebar__channels {
+  padding: 16px 8px;
+  flex: 1;
 }
 
 .homeSidebar__addChannel {
-    color: #8e9297;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
+  color: #8e9297;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .homeSidebar__addChannel button {
-    background: none;
-    border: none;
-    outline: none;
-    color: inherit;
-    padding: 0;
-    cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
 }
 
 .homeSidebar__addChannel button:hover {
-    color: #dcddde;
+  color: #dcddde;
 }
 
 .homeSidebar__bottomBar {
-    background-color: #202225;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
+  background-color: #202225;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
 }
-.homeSidebar__profileInfo{
-    display: flex;
-    align-items: center;
+.homeSidebar__profileInfo {
+  display: flex;
+  align-items: center;
 }
-.homeSidebar__avatar img{
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+.homeSidebar__avatar img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 .homeSidebar__profileInfoText {
-    margin: 0 8px;
+  margin: 0 8px;
 }
 
-.homeSidebar__profileUsername, .homeSidebar__profileId{
-    display: block;
+.homeSidebar__profileUsername,
+.homeSidebar__profileId {
+  display: block;
 }
 
 .homeSidebar__profileId {
-    font-size: 12px;
-    color: #b9bbbe;
+  font-size: 12px;
+  color: #b9bbbe;
 }
 
-.homeSidebar__bottomIcons button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: none;
-    outline: none;
-    border: none;
-    border-radius: 3px;
-    color: #b9bbbe;
-    padding: 8px;
-    cursor: pointer;
+.homeSidebar__bottomIcons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  color: #b9bbbe;
+  padding: 8px;
+  cursor: pointer;
 }
 
 .homeSidebar__bottomIcons button:hover {
-    background-color: rgba(79,84,92,0.32);
-    color: #dcddde;
+  background-color: rgba(79, 84, 92, 0.32);
+  color: #dcddde;
+}
+
+.homeSidebar__modalContent h3 {
+  font-size: 24px;
+  text-align: center;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.homeSidebar__modalContent form {
+    padding: 0 16px;
+}
+
+.homeSidebar__modalContent form div {
+  width: 100%;
+  text-align: left;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: #303339;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  margin-bottom: 20px;
+  color: #dcddde;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.homeSidebar__modalContent form label {
+  color: #dcddde;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.homeSidebar__modalContent form input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  height: 100%;
+  flex: 1;
+  color: #dcddde;
+}
+
+.homeSidebar__modalContent form div span {
+  font-size: 24px;
+  margin: 0 10px;
+  cursor: default;
+}
+
+.homeSidebar__modelContentBottom {
+    text-align: right;
+    background-color: #2f3136;
+    padding: 16px;
+}
+
+.homeSidebar__modelContentBottom button {
+    padding: 10px 22px;
+    color: white;
+    border: none;
+    outline: none;
+    background: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.homeSidebar__modelContentBottom button:last-of-type {
+    background-color: #7289da;
+
+}
+
+.homeSidebar__modelContentBottom button:first-of-type:hover{
+    text-decoration: underline;
+}
+
+.homeSidebar__modelContentBottom button:last-of-type:hover{
+    background-color: #677bc4;
+}
+
+.homeSidebar__modelContentBottom button:last-of-type:active{
+    background-color: #5b6eae;
 }

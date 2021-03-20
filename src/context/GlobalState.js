@@ -149,6 +149,8 @@ export const GlobalProvider = ({ children }) => {
     console.log(res);
   }
 
+  async function addChannel(name) {}
+
   return (
     <GlobalContext.Provider
       value={{
