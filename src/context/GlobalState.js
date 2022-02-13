@@ -18,7 +18,7 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(GlobalReducer, initialState);
-  const BASE_URL = "http://localhost:5000";
+  const BASE_URL = "https://discord-mern-clone-react.herokuapp.com/";
 
   async function registerUser(data) {
     try {
